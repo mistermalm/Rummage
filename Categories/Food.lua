@@ -103,18 +103,6 @@ local function Describe(candidate)
 end
 
 Rummage.RegisterCategory({
-    key = "plainfood",
-    label = "Plain food",
-    macroName = "SmartPlainFood",
-    Prefilter = Prefilter,
-    Classify = ClassifyPlain,
-    Rank = RankPlain,
-    Describe = function(candidate)
-        return string.format("%s (%d health)", candidate.link or candidate.name or ("item:" .. candidate.itemID), candidate.amount)
-    end,
-})
-
-Rummage.RegisterCategory({
     key = "food",
     label = "Buff food",
     macroName = "SmartFood",
@@ -125,4 +113,16 @@ Rummage.RegisterCategory({
     Classify = Classify,
     Rank = Rank,
     Describe = Describe,
+})
+
+Rummage.RegisterCategory({
+    key = "plainfood",
+    label = "Plain food",
+    macroName = "SmartPlainFood",
+    Prefilter = Prefilter,
+    Classify = ClassifyPlain,
+    Rank = RankPlain,
+    Describe = function(candidate)
+        return string.format("%s (%d health)", candidate.link or candidate.name or ("item:" .. candidate.itemID), candidate.amount)
+    end,
 })
